@@ -1,15 +1,15 @@
 # Predicting the Physical Form of Polymer Samples
  
 # Objective
-The goal is to predict the physical form of polymer samples based on laboratory measurements of the particle density and bulk density of the samples. 
+The goal is to predict the physical form of polymer samples based on laboratory measurements of the particle and bulk densities of the samples. 
 
 # Hypothesis
-Both both bulk density and particle density measurements can be used to accurately predict the physical form of polymer samples. By training a classification model on the labeled data, the aim is to predict the physical form of the unlabeled samples. It is expected that feature importance analysis will reveal which type of density measurement is more predictive of the sample's physical form.
+Both both bulk density and particle density measurements can be used to accurately predict the physical form of polymer samples. 
 
 # Data
-The dataset contains two types of measurements: bulk density (measured in lb/ft³), which includes the empty spaces between particles, and particle density (measured in g/cm³), which measures only the polymer material itself. Each sample is uniquely identified and may have been tested multiple times.
+The dataset contains two types of measurements: bulk density (measured in lb/ft³), which includes the empty spaces between particles, and particle density (measured in g/cm³), which measures only the polymer material itself. Each sample is uniquely identified with an ID and may have been tested multiple times.
 
-The physical form of the samples, such as powder or pellets, is provided in a separate file. However, not all samples have this label. The challenge is to predict the physical form for these unlabeled samples.
+The physical form of the samples, such as powder or pellets, is provided in a separate file named classification labels, which can be found in the data folder in this repo. However, not all samples have this label. The goal is to predict the physical form for these unlabeled samples.
 
 The dataset exhibits class imbalance across five classes as shown below: powder, pellets, granular, brown, and cast.
 
