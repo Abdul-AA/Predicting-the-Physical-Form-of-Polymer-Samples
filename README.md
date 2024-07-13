@@ -23,7 +23,7 @@ Subsequently, the data was merged with the labels using a left join to retain sa
 # EDA
 ## Univariate Analysis (Bulk Density and Particle Density)
 
-![hist](Data/hist.png)
+![hist](Plots/hist.png)
 
 1. **Particle Density Distribution**:
     - The  histogram shows that almost all values are concentrated around 1 g/cm³. This indicates that most polymer samples have a particle density very close to 1 g/cm³ with rather subtle differences
@@ -38,7 +38,7 @@ Overall, the histograms indicate that while particle density is highly uniform a
 
 ## Bi-Variate (Bulk Density Vs Physical Form)
 
-![bulk_d](Data/bulk_d.png)
+![bulk_d](Plots/bulk_d.png)
 
 
 1. **Distinct Bulk Density Ranges for Each Class**:
@@ -62,7 +62,7 @@ Overall, the histograms indicate that while particle density is highly uniform a
 
 ## Bi-variate (Particle Density vs Physical Form)
 
-![part_d](Data/part_d.png)
+![part_d](Plots/part_d.png)
 
 1. **Consistent Particle Density Across Classes**:
     - **Powder, Pellets, Blown, and Cast**: The classes show a consistent particle density close to 1 g/cm³ with very little variation. This indicates that the particle density for these forms is quite uniform.
@@ -95,11 +95,11 @@ while the plot indicates that particle density is relatively uniform across most
 # Results and Lessons Learned
 - The best model was the XGBoost model with the following hyperparameters: `sample_weight=balanced`, `max_depth=5`, `learning_rate=0.05`, and `n_estimators=264`. This model achieved 90% accuracy and a 62% average F1 (macro) on the holdout test set. See confusion matrix below.
 
-![conf](Data/conf.png)
+![conf](Plots/conf.png)
 
 - Bulk density was found to have slightly more predictive power in determining the physical form of the particle compared to particle density, as indicated by the feature importance plot below.
 
-![f_plot1](Data/f_plot1.png)
+![f_plot1](Plots/f_plot1.png)
 
 
 
@@ -143,19 +143,19 @@ The final model significantly outperforms the baseline dummy classifier, with an
 
 ## Learning Curve
 
-![Learning Curve](Data/lcurve.png)
+![Learning Curve](Plots/lcurve.png)
 - The learning curve shows the performance of the XGBoost classifier on both the training set and the cross-validation set as the number of training instances increases. It highlights the model's ability to generalize to new data. As shown in the plot above, there is a gap between the training and cross-validation scores, indicating that the model might benefit from being trained with additional data to improve its generalizability. Adding more training instances could help the model better capture the underlying patterns and reduce overfitting, leading to improved performance on unseen data.
 
 
 ## Validation Curve
 
-![Validation Curve](Data/valcurve.png)
+![Validation Curve](Plots/valcurve.png)
 
 - The validation curve shows the impact of the `max_depth` hyperparameter on the training score and cross-validation score. It helps identify the optimal value for this hyperparameter and visualize whether it is leading to high variance
 
 ## Class Prediction Error
 
-![Class Prediction Error](Data/perror.png)
+![Class Prediction Error](Plots/perror.png)
 
 - The class prediction error plot shows the number of predicted instances for each actual class. It helps identify where the model is making the most errors and which classes are being confused with each other.
 
