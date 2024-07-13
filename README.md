@@ -13,7 +13,7 @@ The physical form of the samples, such as powder or pellets, is provided in a se
 
 The dataset exhibits class imbalance across five classes as shown below: powder, pellets, granular, brown, and cast.
 
-![Class_dist](Data/dist.png)
+![Class_dist](Plots/dist.png)
 
 ## Data Preprocessing
 The data preprocessing involved several steps to ensure it was suitable for modeling. Initially, there were no missing values in the dataset, but two duplicate entries were identified and removed. The data was structured such that each sample had two rows, one for each type of density measurement. These were transformed into separate columns for particle density and bulk density to facilitate modeling. The original 'parameter' and 'value' columns were dropped after this transformation.
