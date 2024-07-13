@@ -99,7 +99,7 @@ while the plot indicates that particle density is relatively uniform across most
 
 - Bulk density was found to have slightly more predictive power in determining the physical form of the particle compared to particle density, as indicated by the feature importance plot below.
 
-![f_plot1](Plots/f_plot1.png)
+![f_plot1](Plots/f_plot.png)
 
 
 
