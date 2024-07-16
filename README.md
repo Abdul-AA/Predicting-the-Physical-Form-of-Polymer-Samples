@@ -16,7 +16,7 @@ The dataset exhibits class imbalance across five classes as shown below: powder,
 ![Class_dist](Plots/dist.png)
 
 ## Data Preprocessing
-The data preprocessing involved several steps to ensure it was suitable for modeling. Initially, there were no missing values in the dataset, but two duplicate entries were identified and removed. The data was structured such that each sample had two rows, one for each type of density measurement. These were transformed into separate columns for particle density and bulk density to facilitate modeling. The original 'parameter' and 'value' columns were dropped after this transformation.
+The data preprocessing involved several steps to ensure it was suitable for modeling. Initially, there were no missing values in the dataset, but two duplicate entries were identified and removed. The data was structured such that each sample had two rows, one for each type of density measurement (particle density and bulk density). These were transformed into separate columns for particle density and bulk density to facilitate modeling. The original 'parameter' and 'value' columns were dropped after this transformation.
 
 Subsequently, the data was merged with the labels using a left join to retain samples without labels. These unlabeled samples were then separated out, and any resulting null values were dropped to finalize the dataset for modeling.
 
@@ -91,7 +91,7 @@ while the plot indicates that particle density is relatively uniform across most
 - For each model, the `class_weight` hyperparameter was set to handle class imbalance. The best performing models, random forest and XGBoost, were tuned using randomized search for efficiency. For random forest, only `max_depth` and `n_estimators` were tuned, while for XGBoost, `learning_rate` was also included.
 
 ## Model Evaluation
-- The goal was to maximize accuracy per the instructions, but the average F1 score (macro averaging) was also used to properly assess performance and tune models considering the  class imbalance, ensuring the model performed well for each class. This assumes that precision and recall are equally important. With more information, a metric that can capture the priority between precison and recall could be used, such as the F-beta score.
+- The average F1 score (macro averaging) was used to assess performance and tune models considering the  class imbalance, ensuring the model performed well for each class. This assumes that precision and recall are equally important. With more information about the cost of false postive vs false negative, a metric that can capture the priority between precison and recall could be used, such as the F-beta score.
 # Results and Lessons Learned
 - The best model was the XGBoost model with the following hyperparameters: `sample_weight=balanced`, `max_depth=5`, `learning_rate=0.05`, and `n_estimators=264`. This model achieved 90% accuracy and a 62% average F1 (macro) on the holdout test set. See confusion matrix below.
 
@@ -162,7 +162,7 @@ The final model significantly outperforms the baseline dummy classifier, with an
 
 
 # Model Interpretability/Explainability
-- While XGBoost models are not inherently interpretable as there are multiple trees in the ensemble, model explainability frameworks such as SHAP and LIME can be used to understand the model's decisions. The feature importance plot provides insight into the most significant features influencing the model's decisions.
+- While XGBoost models are not inherently interpretable as there are multiple trees in the ensemble, model explainability frameworks such as SHAP and LIME can be used to understand the model's decisions. While, the feature importance plot provides insight into the most significant features influencing the model's decisions, model explainability frameworks will reveal how the model arrives at its decisions based on the features.
 
 # Threats to Validity
 - Limited test data: The model's performance in production may differ from the test results, as with any ML model. It is evident in the learning curve above that the performance of the model is quite unstable, as shown by the width of the shaded area representing the cross-validation score. This instability suggests that the model may be sensitive to the particular subset of data it is trained on and tested against, indicating a potential variance problem that could affect its reliability in production.
